@@ -1,0 +1,84 @@
+REPORT ZRH_TASK6.
+
+TYPES: BEGIN OF TY_NGJYRAT,
+
+         EMRI_NGJYRES TYPE C LENGTH 30,
+
+       END OF TY_NGJYRAT,
+tt_ngjyratt type standard table of ty_ngjyrat with default key.
+
+
+TYPES: BEGIN OF TY_TABELA,
+
+         EMER    TYPE C LENGTH 30,
+         MBIEMER TYPE C LENGTH 30,
+         gt_ngjyrat TYPE  tt_ngjyratt,
+
+       END OF TY_TABELA.
+
+
+DATA:GS_NGJYRAT TYPE TY_NGJYRAT,
+     GT_TABELA  TYPE STANDARD TABLE OF TY_TABELA WITH DEFAULT KEY,
+GS_TABELA TYPE TY_TABELA.
+
+gs_tabela-emer = 'Liam'.
+gs_tabela-MBIEMER = 'Oliver'.
+
+GS_NGJYRAT-EMRI_NGJYRES = 'kuqe'.
+
+append gs_ngjyrat to gs_tabela-gt_ngjyrat.
+clear gs_ngjyrat.
+
+GS_NGJYRAT-EMRI_NGJYRES = 'zeze'.
+
+append gs_ngjyrat to gs_tabela-gt_ngjyrat.
+clear gs_ngjyrat.
+
+GS_NGJYRAT-EMRI_NGJYRES = 'blu'.
+
+append gs_ngjyrat to gs_tabela-gt_ngjyrat.
+clear gs_ngjyrat.
+
+append gs_tabela to gt_tabela.
+clear gs_tabela.
+
+gs_tabela-emer = 'Olivia'.
+gs_tabela-MBIEMER = 'Elijah'.
+
+GS_NGJYRAT-EMRI_NGJYRES = 'kuqe'.
+
+append gs_ngjyrat to gs_tabela-gt_ngjyrat.
+clear gs_ngjyrat.
+
+GS_NGJYRAT-EMRI_NGJYRES = 'blu'.
+
+append gs_ngjyrat to gs_tabela-gt_ngjyrat.
+clear gs_ngjyrat.
+
+append gs_tabela to gt_tabela.
+clear gs_tabela.
+
+gs_tabela-emer = 'Fred'.
+gs_tabela-MBIEMER = 'Noah'.
+
+GS_NGJYRAT-EMRI_NGJYRES = 'zeze'.
+
+append gs_ngjyrat to gs_tabela-gt_ngjyrat.
+clear gs_ngjyrat.
+
+append gs_tabela to gt_tabela.
+clear gs_tabela.
+
+
+loop at gt_tabela to gs_tabela.
+loop at gt_ngjyrat into gs_ngjyrat.
+
+
+if GS_NGJYRAT-EMRI_NGJYRES = 'kuqe'.
+
+write: /  gs_tabela-emer , 'kuqe'.
+
+endif.
+
+endloop.
+endloop.

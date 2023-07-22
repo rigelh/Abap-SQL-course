@@ -1,0 +1,139 @@
+REPORT ZRH_TASK11.
+
+Types: begin of ty_po,
+
+BUKRS type BKPF-BUKRS,
+BELNR type BKPF-BELNR,
+GJAHR type BKPF-GJAHR,
+BLDAT type BKPF-BLDAT,
+MONAT type BKPF-MONAT,
+XBLNR type BKPF-XBLNR,
+BKTXT type BKPF-BKTXT,
+WAERS type BKPF-WAERS,
+DMBTR type BSEG-DMBTR,
+WRBTR type BSEG-WRBTR,
+AUFNR type BSEG-AUFNR,
+VBELN type BSEG-VBELN,
+LIFNR type BSEG-LIFNR,
+NAME1 type LFA1-NAME1,
+ORT01 type LFA1-ORT01,
+BLART type BKPF-BLART,
+SHKZG type BSEG-SHKZG,
+HKONT type BSEG-HKONT,
+
+
+end of ty_po.
+
+Data: gt_po type standard table of ty_po,
+gs_po type ty_po,
+gs_bkpf type bkpf,
+gs_bseg type bseg,
+gv_belnr type bkpf-belnr,
+gv_tot type bseg-dmbtr.
+
+Parameters:
+p_gjahr type bkpf-gjahr obligatory.
+
+
+Select-options:
+s_BELNR for gs_po-BELNR,
+s_BUKRS for gs_po-gjahr,
+s_BLART for gs_po-BLART no intervals No-extension,
+s_HKONT for gs_po-HKONT.
+
+Start-of-selection.
+
+select BKPF~Bukrs
+BKPF~BELNR
+BKPF~GJAHR
+BKPF~BLDAT
+BKPF~MONAT
+BKPF~XBLNR
+BKPF~BKTXT
+BKPF~WAERS
+BSEG~DMBTR
+BSEG~WRBTR
+BSEG~AUFNR
+BSEG~VBELN
+BSEG~LIFNR
+LFA1~NAME1
+LFA1~ORT01
+BKPF~BLART
+BSEG~SHKZG
+BSEG~HKONT
+From bkpf
+
+join BSEG
+on BSEG~BELNR = BKPF~BELNR
+and bseg~Bukrs = bkpf~Bukrs
+and bseg~GJAHR = bkpf~GJAHR
+*sepse te treja jan keys qe formojn uniqe key
+
+left join LFA1
+on LFA1~LIFNR = BSEG~LIFNR
+
+
+into table gt_po
+
+where bkpf~gjahr = p_gjahr
+and bkpf~belnr in s_belnr
+and bkpf~Bukrs in s_Bukrs
+and bseg~HKONT in s_HKONT
+and bkpf~BLART in s_BLART.
+
+if sy-subrc NE 0.
+Message 'nuk ka rekorde' type 'S' Display like 'E'.
+Endif.
+
+Loop at gt_po into gs_po.
+
+if gs_bkpf-belnr <> gs_po-belnr
+or gs_bkpf-GJAHR <> gs_po-GJAHR
+or gs_bkpf-Bukrs <> gs_po-Bukrs.
+
+if gs_bkpf-belnr is not initial.
+Write: / 'Vlera e mbetur:', gv_tot.
+Uline.
+Clear gv_tot.
+Endif.
+
+gs_bkpf-belnr = gs_po-belnr .
+ gs_bkpf-GJAHR = gs_po-GJAHR.
+gs_bkpf-Bukrs = gs_po-Bukrs.
+
+Endif.
+
+Case gs_po-shkzg.
+
+When 'H'.
+gv_tot = gv_tot + gs_po-dmbtr.
+When 'S'.
+gv_tot = gv_tot - gs_po-dmbtr.
+
+Endcase.
+
+Write:/ gs_po-BUKRS,
+gs_po-BUKRS,
+gs_po-BELNR,
+gs_po-GJAHR,
+gs_po-BLDAT,
+gs_po-MONAT,
+gs_po-XBLNR,
+gs_po-BKTXT,
+gs_po-WAERS,
+gs_po-DMBTR,
+gs_po-WRBTR,
+gs_po-AUFNR,
+gs_po-VBELN,
+gs_po-LIFNR,
+gs_po-NAME1,
+gs_po-ORT01,
+gs_po-SHKZG.
+ULINE.
+
+At last.
+Write: / 'Vlera e mbetur:', gv_tot.
+Uline.
+Clear gv_tot.
+Endat.
+Endloop.

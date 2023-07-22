@@ -1,0 +1,91 @@
+REPORT ZRH_TASK9.
+
+
+Types: Begin of ty_spfli,
+
+CARRID type spfli-carrid,
+CONNID type spfli-CONNID,
+COUNTRYFR type spfli-COUNTRYFR,
+CITYFROM type spfli-CITYFROM,
+AIRPFROM type spfli-AIRPFROM ,
+COUNTRYTO type  spfli-COUNTRYTO ,
+CITYTO type spfli-CITYTO ,
+AIRPTO type spfli-AIRPTO ,
+FLTIME type spfli-FLTIME,
+DEPTIME type spfli-DEPTIME ,
+ARRTIME TYPE spfli-ARRTIME,
+FLTYPE type spfli-FLtype,
+
+end of ty_spfli.
+
+
+
+Data: gt_spfli type standard table of ty_spfli ,
+gs_spfli type ty_spfli,
+gv_flytime type i,
+gv_fltype type c length 15.
+
+
+Parameters: p_hours type s_fltime,
+p_minu type s_fltime.
+
+Select-options: S_cityf for gs_spfli-CITYFROM.
+Select-options: S_cityt for  gs_spfli-CITYTO .
+
+gv_flytime = p_hours  + p_minu.
+
+if gv_flytime is not initial.
+Select CARRID
+CONNID
+COUNTRYFR
+CITYFROM
+AIRPFROM
+COUNTRYTO
+CITYTO
+AIRPTO
+FLTIME
+DEPTIME
+ARRTIME
+FLTYPE
+From SPFLI into table gt_spfli
+ where cityfrom in s_cityf and
+cityto in s_cityt and
+fltime <= gv_flytime.
+else.
+Select CARRID
+CONNID
+COUNTRYFR
+CITYFROM
+AIRPFROM
+COUNTRYTO
+CITYTO
+AIRPTO
+FLTIME
+DEPTIME
+ARRTIME
+FLTYPE
+From SPFLI into table gt_spfli where
+cityfrom in s_cityf and
+cityto in s_cityt.
+endif.
+
+Loop at gt_spfli into gs_spfli.
+
+Write: / gs_spfli-CARRID,
+gs_spfli-CONNID,
+gs_spfli-COUNTRYFR,
+gs_spfli-CITYFROM,
+gs_spfli-AIRPFROM,
+gs_spfli-COUNTRYTO,
+gs_spfli-CITYTO,
+gs_spfli-AIRPTO,
+gs_spfli-FLTIME,
+gs_spfli-DEPTIME,
+gs_spfli-ARRTIME.
+Case gs_spfli-fltype.
+When 'X'.
+Write: icon_flight as icon.
+Endcase.
+
+ENdloop.
+

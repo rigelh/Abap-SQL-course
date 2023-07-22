@@ -1,0 +1,720 @@
+REPORT ZRH_TASK7.
+
+types : begin of ty_kreu_fatures,
+
+purchase_order type c length 15,
+company_code type i,
+created_on type d,
+vendor type i,
+
+end of ty_kreu_fatures.
+
+types : begin of ty_rrjeshtat_e_fatures,
+
+purchase_order type c length 15,
+item type i,
+Material type c length 10,
+end of ty_rrjeshtat_e_fatures.
+
+types : begin of ty_pershrimi_materialeve,
+
+Material type c length 10,
+Language type string,
+Description type string,
+end of ty_pershrimi_materialeve.
+
+types : begin of ty_output,
+
+purchase_order type c length 15,
+company_code type i,
+created_on type d,
+vendor type i,
+item type i,
+Material type c length 10,
+Description type string,
+end of ty_output.
+
+types : begin of ty_output1,
+
+purchase_order type c length 15,
+item type i,
+Material type c length 10,
+Description type string,
+end of ty_output1.
+
+
+types : begin of ty_output2,
+
+purchase_order type c length 15,
+company_code type i,
+created_on type d,
+vendor type i,
+item type i,
+Material type c length 10,
+Description type string,
+
+end of ty_output2.
+
+
+
+
+
+data: gs_kreu_fatures type ty_kreu_fatures,
+gt_kreu_fatures type standard table of ty_kreu_fatures WITH DEFAULT KEY,
+gs_rrjeshtat_e_fatures type ty_rrjeshtat_e_fatures,
+gt_rrjeshtat_e_fatures type standard table of ty_rrjeshtat_e_fatures WITH DEFAULT KEY,
+gs_pershrimi_materialeve type ty_pershrimi_materialeve,
+gt_pershrimi_materialeve type standard table of ty_pershrimi_materialeve WITH DEFAULT KEY,
+gs_output type ty_output,
+gt_output type standard table of ty_output WITH DEFAULT KEY,
+gs_output1 type ty_output1,
+gt_output1 type standard table of ty_output1 WITH DEFAULT KEY,
+gs_output2 type ty_output2,
+gt_output2 type standard table of ty_output2 WITH DEFAULT KEY.
+
+gs_kreu_fatures-purchase_order = '3000000004' .
+gs_kreu_fatures-company_code = 3000.
+gs_kreu_fatures-created_on = '20001102'.
+gs_kreu_fatures-vendor = 5550 .
+
+append gs_kreu_fatures to gt_kreu_fatures.
+clear gs_kreu_fatures .
+
+gs_kreu_fatures-purchase_order = '3000000005' .
+gs_kreu_fatures-company_code = 3000.
+gs_kreu_fatures-created_on = '20011102'.
+gs_kreu_fatures-vendor = 5550 .
+
+append gs_kreu_fatures to gt_kreu_fatures.
+clear gs_kreu_fatures .
+
+gs_kreu_fatures-purchase_order = '3000000006'.
+gs_kreu_fatures-company_code = 3000.
+gs_kreu_fatures-created_on = '20021102'.
+gs_kreu_fatures-vendor = 3020 .
+
+append gs_kreu_fatures to gt_kreu_fatures.
+clear gs_kreu_fatures .
+
+gs_kreu_fatures-purchase_order = '3000000007'.
+gs_kreu_fatures-company_code = 3000.
+gs_kreu_fatures-created_on = '20021102'.
+gs_kreu_fatures-vendor = 3730 .
+
+append gs_kreu_fatures to gt_kreu_fatures.
+clear gs_kreu_fatures .
+
+gs_kreu_fatures-purchase_order = '3000000008'.
+gs_kreu_fatures-company_code = 3000.
+gs_kreu_fatures-created_on = '20031102'.
+gs_kreu_fatures-vendor = 3910 .
+
+append gs_kreu_fatures to gt_kreu_fatures.
+clear gs_kreu_fatures .
+
+gs_kreu_fatures-purchase_order = '3000000009'.
+gs_kreu_fatures-company_code = 3000.
+gs_kreu_fatures-created_on = '20001102'.
+gs_kreu_fatures-vendor = 3411 .
+
+append gs_kreu_fatures to gt_kreu_fatures.
+clear gs_kreu_fatures .
+
+gs_kreu_fatures-purchase_order = '3000000010'.
+gs_kreu_fatures-company_code = 3000.
+gs_kreu_fatures-created_on = '20011102'.
+gs_kreu_fatures-vendor = 3411 .
+
+append gs_kreu_fatures to gt_kreu_fatures.
+clear gs_kreu_fatures .
+
+
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000004'.
+gs_rrjeshtat_e_fatures-item = 1.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000004'.
+gs_rrjeshtat_e_fatures-item = 2.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000005'.
+gs_rrjeshtat_e_fatures-item = 1.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000005'.
+gs_rrjeshtat_e_fatures-item = 2.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000006'.
+gs_rrjeshtat_e_fatures-item = 1.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000006'.
+gs_rrjeshtat_e_fatures-item = 2.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000006'.
+gs_rrjeshtat_e_fatures-item = 3.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000007'.
+gs_rrjeshtat_e_fatures-item = 1.
+gs_rrjeshtat_e_fatures-Material = 'MSA-2000'.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000007'.
+gs_rrjeshtat_e_fatures-item = 2.
+gs_rrjeshtat_e_fatures-Material = 'R-1002'.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000007'.
+gs_rrjeshtat_e_fatures-item = 3.
+gs_rrjeshtat_e_fatures-Material = 'MSA-2006'.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000008'.
+gs_rrjeshtat_e_fatures-item = 1.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000008'.
+gs_rrjeshtat_e_fatures-item = 2.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000008'.
+gs_rrjeshtat_e_fatures-item = 3.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000008'.
+gs_rrjeshtat_e_fatures-item = 4.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000008'.
+gs_rrjeshtat_e_fatures-item = 5.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000008'.
+gs_rrjeshtat_e_fatures-item = 6.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000009'.
+gs_rrjeshtat_e_fatures-item = 1.
+gs_rrjeshtat_e_fatures-Material = 'WL-1000'.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000009'.
+gs_rrjeshtat_e_fatures-item = 3.
+gs_rrjeshtat_e_fatures-Material = '100-400'.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000009'.
+gs_rrjeshtat_e_fatures-item = 4.
+gs_rrjeshtat_e_fatures-Material = 'DG-1000'.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+gs_rrjeshtat_e_fatures-purchase_order = '3000000010'.
+gs_rrjeshtat_e_fatures-item = 2.
+gs_rrjeshtat_e_fatures-Material = 'I-1100'.
+append gs_rrjeshtat_e_fatures to gt_rrjeshtat_e_fatures.
+clear gs_rrjeshtat_e_fatures .
+
+
+gs_pershrimi_materialeve-Material = '100-400'.
+gs_pershrimi_materialeve-Language = 'DE'.
+gs_pershrimi_materialeve-Description = 'Elektronik'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = '100-400'.
+gs_pershrimi_materialeve-Language = 'EN'.
+gs_pershrimi_materialeve-Description = 'Electronic'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'DG-1000'.
+gs_pershrimi_materialeve-Language = 'DE'.
+gs_pershrimi_materialeve-Description = 'Gummidichtung'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'DG-1000'.
+gs_pershrimi_materialeve-Language = 'EN'.
+gs_pershrimi_materialeve-Description = 'Rubber Seal'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'I-1100'.
+gs_pershrimi_materialeve-Language = 'DE'.
+gs_pershrimi_materialeve-Description = 'Pumpenmontage'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'I-1100'.
+gs_pershrimi_materialeve-Language = 'EN'.
+gs_pershrimi_materialeve-Description = 'Pump Installation'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'MSA-2000'.
+gs_pershrimi_materialeve-Language = 'DE'.
+gs_pershrimi_materialeve-Description = 'Hochgeschwindigkeitsdrucker/Laserdrucker'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'MSA-2000'.
+gs_pershrimi_materialeve-Language = 'EN'.
+gs_pershrimi_materialeve-Description = 'High Speed Printer/Laser Printer'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'MSA-2006'.
+gs_pershrimi_materialeve-Language = 'DE'.
+gs_pershrimi_materialeve-Description = 'Farbmonitor PAQ, 21'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'MSA-2006'.
+gs_pershrimi_materialeve-Language = 'EN'.
+gs_pershrimi_materialeve-Description = 'PAQ Monitor, 21&quot;, Color'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'R-1002'.
+gs_pershrimi_materialeve-Language = 'DE'.
+gs_pershrimi_materialeve-Description = 'PC Maxitec R-3133'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'R-1002'.
+gs_pershrimi_materialeve-Language = 'EN'.
+gs_pershrimi_materialeve-Description = 'Maxitec R-3133 PC'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'WL-1000'.
+gs_pershrimi_materialeve-Language = 'DE'.
+gs_pershrimi_materialeve-Description = 'Wellenanlage'.
+append gs_pershrimi_materialeve to gt_pershrimi_materialeve.
+clear gs_pershrimi_materialeve .
+
+gs_pershrimi_materialeve-Material = 'WL-1000'.
+gs_pershrimi_materialeve-Language = 'EN'.
+REPORT ZRH_TASK7.
+
+TYPES : BEGIN OF TY_KREU_FATURES,
+
+          PURCHASE_ORDER TYPE C LENGTH 15,
+          COMPANY_CODE   TYPE I,
+          CREATED_ON     TYPE D,
+          VENDOR         TYPE I,
+
+        END OF TY_KREU_FATURES.
+
+TYPES : BEGIN OF TY_RRJESHTAT_E_FATURES,
+
+          PURCHASE_ORDER TYPE C LENGTH 15,
+          ITEM           TYPE I,
+          MATERIAL       TYPE C LENGTH 10,
+        END OF TY_RRJESHTAT_E_FATURES.
+
+TYPES : BEGIN OF TY_PERSHRIMI_MATERIALEVE,
+
+          MATERIAL    TYPE C LENGTH 10,
+          LANGUAGE    TYPE STRING,
+          DESCRIPTION TYPE STRING,
+        END OF TY_PERSHRIMI_MATERIALEVE.
+
+TYPES : BEGIN OF TY_OUTPUT,
+
+          PURCHASE_ORDER TYPE C LENGTH 15,
+          COMPANY_CODE   TYPE I,
+          CREATED_ON     TYPE D,
+          VENDOR         TYPE I,
+          ITEM           TYPE I,
+          MATERIAL       TYPE C LENGTH 10,
+          DESCRIPTION    TYPE STRING,
+        END OF TY_OUTPUT.
+
+TYPES : BEGIN OF TY_OUTPUT1,
+
+          PURCHASE_ORDER TYPE C LENGTH 15,
+          ITEM           TYPE I,
+          MATERIAL       TYPE C LENGTH 10,
+          DESCRIPTION    TYPE STRING,
+        END OF TY_OUTPUT1.
+
+
+TYPES : BEGIN OF TY_OUTPUT2,
+
+          PURCHASE_ORDER TYPE C LENGTH 15,
+          COMPANY_CODE   TYPE I,
+          CREATED_ON     TYPE D,
+          VENDOR         TYPE I,
+          ITEM           TYPE I,
+          MATERIAL       TYPE C LENGTH 10,
+          DESCRIPTION    TYPE STRING,
+
+        END OF TY_OUTPUT2.
+
+
+
+
+
+DATA: GS_KREU_FATURES          TYPE TY_KREU_FATURES,
+      GT_KREU_FATURES          TYPE STANDARD TABLE OF TY_KREU_FATURES WITH DEFAULT KEY,
+      GS_RRJESHTAT_E_FATURES   TYPE TY_RRJESHTAT_E_FATURES,
+      GT_RRJESHTAT_E_FATURES   TYPE STANDARD TABLE OF TY_RRJESHTAT_E_FATURES WITH DEFAULT KEY,
+      GS_PERSHRIMI_MATERIALEVE TYPE TY_PERSHRIMI_MATERIALEVE,
+      GT_PERSHRIMI_MATERIALEVE TYPE STANDARD TABLE OF TY_PERSHRIMI_MATERIALEVE WITH DEFAULT KEY,
+      GS_OUTPUT                TYPE TY_OUTPUT,
+      GT_OUTPUT                TYPE STANDARD TABLE OF TY_OUTPUT WITH DEFAULT KEY,
+      GS_OUTPUT1               TYPE TY_OUTPUT1,
+      GT_OUTPUT1               TYPE STANDARD TABLE OF TY_OUTPUT1 WITH DEFAULT KEY,
+      GS_OUTPUT2               TYPE TY_OUTPUT2,
+      GT_OUTPUT2               TYPE STANDARD TABLE OF TY_OUTPUT2 WITH DEFAULT KEY.
+
+PARAMETERS: P_START TYPE SY-DATUM OBLIGATORY.
+
+GS_KREU_FATURES-PURCHASE_ORDER = '3000000004' .
+GS_KREU_FATURES-COMPANY_CODE = 3000.
+GS_KREU_FATURES-CREATED_ON = '20001102'.
+GS_KREU_FATURES-VENDOR = 5550 .
+
+APPEND GS_KREU_FATURES TO GT_KREU_FATURES.
+CLEAR GS_KREU_FATURES .
+
+GS_KREU_FATURES-PURCHASE_ORDER = '3000000005' .
+GS_KREU_FATURES-COMPANY_CODE = 3000.
+GS_KREU_FATURES-CREATED_ON = '20011102'.
+GS_KREU_FATURES-VENDOR = 5550 .
+
+APPEND GS_KREU_FATURES TO GT_KREU_FATURES.
+CLEAR GS_KREU_FATURES .
+
+GS_KREU_FATURES-PURCHASE_ORDER = '3000000006'.
+GS_KREU_FATURES-COMPANY_CODE = 3000.
+GS_KREU_FATURES-CREATED_ON = '20021102'.
+GS_KREU_FATURES-VENDOR = 3020 .
+
+APPEND GS_KREU_FATURES TO GT_KREU_FATURES.
+CLEAR GS_KREU_FATURES .
+
+GS_KREU_FATURES-PURCHASE_ORDER = '3000000007'.
+GS_KREU_FATURES-COMPANY_CODE = 3000.
+GS_KREU_FATURES-CREATED_ON = '20021102'.
+GS_KREU_FATURES-VENDOR = 3730 .
+
+APPEND GS_KREU_FATURES TO GT_KREU_FATURES.
+CLEAR GS_KREU_FATURES .
+
+GS_KREU_FATURES-PURCHASE_ORDER = '3000000008'.
+GS_KREU_FATURES-COMPANY_CODE = 3000.
+GS_KREU_FATURES-CREATED_ON = '20031102'.
+GS_KREU_FATURES-VENDOR = 3910 .
+
+APPEND GS_KREU_FATURES TO GT_KREU_FATURES.
+CLEAR GS_KREU_FATURES .
+
+GS_KREU_FATURES-PURCHASE_ORDER = '3000000009'.
+GS_KREU_FATURES-COMPANY_CODE = 3000.
+GS_KREU_FATURES-CREATED_ON = '20001102'.
+GS_KREU_FATURES-VENDOR = 3411 .
+
+APPEND GS_KREU_FATURES TO GT_KREU_FATURES.
+CLEAR GS_KREU_FATURES .
+
+GS_KREU_FATURES-PURCHASE_ORDER = '3000000010'.
+GS_KREU_FATURES-COMPANY_CODE = 3000.
+GS_KREU_FATURES-CREATED_ON = '20011102'.
+GS_KREU_FATURES-VENDOR = 3411 .
+
+APPEND GS_KREU_FATURES TO GT_KREU_FATURES.
+CLEAR GS_KREU_FATURES .
+
+
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000004'.
+GS_RRJESHTAT_E_FATURES-ITEM = 1.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000004'.
+GS_RRJESHTAT_E_FATURES-ITEM = 2.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000005'.
+GS_RRJESHTAT_E_FATURES-ITEM = 1.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000005'.
+GS_RRJESHTAT_E_FATURES-ITEM = 2.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000006'.
+GS_RRJESHTAT_E_FATURES-ITEM = 1.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000006'.
+GS_RRJESHTAT_E_FATURES-ITEM = 2.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000006'.
+GS_RRJESHTAT_E_FATURES-ITEM = 3.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000007'.
+GS_RRJESHTAT_E_FATURES-ITEM = 1.
+GS_RRJESHTAT_E_FATURES-MATERIAL = 'MSA-2000'.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000007'.
+GS_RRJESHTAT_E_FATURES-ITEM = 2.
+GS_RRJESHTAT_E_FATURES-MATERIAL = 'R-1002'.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000007'.
+GS_RRJESHTAT_E_FATURES-ITEM = 3.
+GS_RRJESHTAT_E_FATURES-MATERIAL = 'MSA-2006'.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000008'.
+GS_RRJESHTAT_E_FATURES-ITEM = 1.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000008'.
+GS_RRJESHTAT_E_FATURES-ITEM = 2.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000008'.
+GS_RRJESHTAT_E_FATURES-ITEM = 3.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000008'.
+GS_RRJESHTAT_E_FATURES-ITEM = 4.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000008'.
+GS_RRJESHTAT_E_FATURES-ITEM = 5.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000008'.
+GS_RRJESHTAT_E_FATURES-ITEM = 6.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000009'.
+GS_RRJESHTAT_E_FATURES-ITEM = 1.
+GS_RRJESHTAT_E_FATURES-MATERIAL = 'WL-1000'.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000009'.
+GS_RRJESHTAT_E_FATURES-ITEM = 3.
+GS_RRJESHTAT_E_FATURES-MATERIAL = '100-400'.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000009'.
+GS_RRJESHTAT_E_FATURES-ITEM = 4.
+GS_RRJESHTAT_E_FATURES-MATERIAL = 'DG-1000'.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER = '3000000010'.
+GS_RRJESHTAT_E_FATURES-ITEM = 2.
+GS_RRJESHTAT_E_FATURES-MATERIAL = 'I-1100'.
+APPEND GS_RRJESHTAT_E_FATURES TO GT_RRJESHTAT_E_FATURES.
+CLEAR GS_RRJESHTAT_E_FATURES .
+
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = '100-400'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'DE'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Elektronik'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = '100-400'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'EN'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Electronic'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'DG-1000'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'DE'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Gummidichtung'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'DG-1000'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'EN'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Rubber Seal'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'I-1100'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'DE'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Pumpenmontage'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'I-1100'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'EN'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Pump Installation'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'MSA-2000'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'DE'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Hochgeschwindigkeitsdrucker/Laserdrucker'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'MSA-2000'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'EN'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'High Speed Printer/Laser Printer'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'MSA-2006'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'DE'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Farbmonitor PAQ, 21'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'MSA-2006'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'EN'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'PAQ Monitor, 21&quot;, Color'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'R-1002'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'DE'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'PC Maxitec R-3133'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'R-1002'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'EN'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Maxitec R-3133 PC'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'WL-1000'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'DE'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Wellenanlage'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+GS_PERSHRIMI_MATERIALEVE-MATERIAL = 'WL-1000'.
+GS_PERSHRIMI_MATERIALEVE-LANGUAGE = 'EN'.
+GS_PERSHRIMI_MATERIALEVE-DESCRIPTION = 'Shafting assembly'.
+APPEND GS_PERSHRIMI_MATERIALEVE TO GT_PERSHRIMI_MATERIALEVE.
+CLEAR GS_PERSHRIMI_MATERIALEVE .
+
+LOOP AT GT_RRJESHTAT_E_FATURES INTO GS_RRJESHTAT_E_FATURES.
+
+  GS_OUTPUT-PURCHASE_ORDER = GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER.
+  GS_OUTPUT-ITEM = GS_RRJESHTAT_E_FATURES-ITEM.
+  GS_OUTPUT-MATERIAL = GS_RRJESHTAT_E_FATURES-MATERIAL.
+
+  READ TABLE GT_KREU_FATURES INTO GS_KREU_FATURES WITH KEY PURCHASE_ORDER =  GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER .
+
+  IF SY-SUBRC = 0 .
+
+
+
+    IF P_START >  GS_KREU_FATURES-CREATED_ON.
+      GS_OUTPUT-CREATED_ON = GS_KREU_FATURES-CREATED_ON.
+    ENDIF.
+
+    GS_OUTPUT-COMPANY_CODE = GS_KREU_FATURES-COMPANY_CODE.
+    GS_OUTPUT-VENDOR = GS_KREU_FATURES-VENDOR.
+
+
+
+    APPEND GS_OUTPUT TO GT_OUTPUT.
+    CLEAR GS_OUTPUT.
+  ENDIF.
+
+ENDLOOP.
+
+
+LOOP AT GT_RRJESHTAT_E_FATURES INTO GS_RRJESHTAT_E_FATURES.
+
+  GS_OUTPUT1-PURCHASE_ORDER = GS_RRJESHTAT_E_FATURES-PURCHASE_ORDER.
+  GS_OUTPUT1-ITEM = GS_RRJESHTAT_E_FATURES-ITEM.
+  GS_OUTPUT1-MATERIAL = GS_RRJESHTAT_E_FATURES-MATERIAL.
+
+  READ TABLE GT_PERSHRIMI_MATERIALEVE INTO GS_PERSHRIMI_MATERIALEVE WITH KEY MATERIAL = GS_RRJESHTAT_E_FATURES-MATERIAL .
+  IF SY-SUBRC = 0.
+    GS_OUTPUT1-DESCRIPTION = GS_PERSHRIMI_MATERIALEVE-DESCRIPTION.
+  ENDIF.
+
+  APPEND GS_OUTPUT1 TO GT_OUTPUT1.
+  CLEAR GS_OUTPUT1.
+ENDLOOP.
+
+
+
+LOOP AT GT_OUTPUT INTO GS_OUTPUT.
+
+  GS_OUTPUT2-PURCHASE_ORDER = GS_OUTPUT-PURCHASE_ORDER.
+  GS_OUTPUT2-ITEM = GS_OUTPUT-ITEM.
+  GS_OUTPUT2-COMPANY_CODE =  GS_OUTPUT-COMPANY_CODE.
+  GS_OUTPUT2-MATERIAL = GS_OUTPUT-MATERIAL.
+  GS_OUTPUT2-CREATED_ON = GS_OUTPUT-CREATED_ON.
+  GS_OUTPUT2-VENDOR = GS_OUTPUT-VENDOR.
+
+  READ TABLE GT_OUTPUT1 INTO GS_OUTPUT1 WITH KEY MATERIAL = GS_OUTPUT-MATERIAL .
+
+  IF SY-SUBRC = 0.
+    GS_OUTPUT2-DESCRIPTION = GS_OUTPUT1-DESCRIPTION.
+  ENDIF.
+
+  APPEND GS_OUTPUT2 TO GT_OUTPUT2.
+  CLEAR GS_OUTPUT2.
+ENDLOOP.
+
+
+LOOP AT GT_OUTPUT2 INTO GS_OUTPUT2.
+  WRITE: /  GS_OUTPUT2-PURCHASE_ORDER,
+   GS_OUTPUT2-COMPANY_CODE,
+  GS_OUTPUT2-CREATED_ON DD/MM/YYYY,
+   GS_OUTPUT2-VENDOR,
+   GS_OUTPUT2-ITEM,
+   GS_OUTPUT2-MATERIAL,
+   GS_OUTPUT2-DESCRIPTION.
+ENDLOOP.

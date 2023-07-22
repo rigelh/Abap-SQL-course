@@ -1,0 +1,90 @@
+REPORT ZRH_TASK10.
+
+Types: BEgin of ty_mara,
+
+MATNR type mara-matnr,
+ERSDA type mara-ERSDA,
+ERNAM type mara-ERNAM,
+LAEDA type mara-LAEDA,
+AENAM type mara-AENAM,
+MTART type mara-MTART,
+MBRSH type mara-MBRSH,
+MEINS type mara-MEINS,
+NTGEW type mara-NTGEW,
+gewei type MARA-GEWEI,
+ENd of ty_mara.
+
+types : begin of ty_makt,
+matnr type makt-matnr,
+maktx type makt-maktx,
+end of ty_makt.
+
+Data: gt_mara type standard table of ty_mara ,
+gs_mara type ty_mara,
+gv_tot type mara-ntgew,
+gs_makt type ty_makt,
+gt_makt type standard table of ty_makt.
+
+Parameters: p_pesha type MARA-GEWEI obligatory.
+
+Select-options: S_matnr for gs_mara-matnr,
+                S_ERSDA for gs_mara-ERSDA,
+              S_ERNAM  for gs_mara-ERNAM .
+
+start-of-selection.
+
+Select
+MATNR
+ERSDA
+ERNAM
+LAEDA
+AENAM
+MTART
+MBRSH
+MEINS
+NTGEW
+gewei
+From mara
+into table gt_mara
+ where gewei = p_pesha
+ and MATNR in s_MATNR
+and ersda in s_ersda
+and ernam in s_ernam.
+
+
+Select
+matnr
+maktx
+from makt
+into table gt_makt
+where matnr in s_matnr
+and spras = sy-langu.
+
+* ku spras mban gjuhen me te cilen ke ber log in 
+
+
+
+Loop at gt_mara into gs_mara.
+
+gv_tot = gs_mara-ntgew + gv_tot.
+
+Write: / gs_mara-matnr,
+gs_mara-ersda,
+gs_mara-ernam,
+gs_mara-laeda,
+gs_mara-aenam,
+gs_mara-mtart,
+gs_mara-MBRSH,
+gs_mara-MEINS,
+gs_mara-NTGEW,
+gs_MARA-GEWEI.
+
+read table gt_makt into gs_makt with key matnr = gs_mara-matnr.
+
+if sy-subrc = 0.
+write: gs_makt-maktx.
+endif.
+
+endloop.
+
+Write : / 'Totali eshte' , gv_tot.
